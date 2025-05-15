@@ -1,8 +1,20 @@
+# generate_qr.py
 import qrcode
+from pathlib import Path
 
-url = "https://Kore-yoshi.github.io/my-qrcode-site/content.html"
+output_dir = Path("dist")
+output_dir.mkdir(exist_ok=True)
 
-img = qrcode.make(url)
-img.save("qrcode.png")
+img = qrcode.make("https://your-content-or-html-link")
+img.save(output_dir / "qrcode.png")
 
-print("✅ 已生成公网二维码")
+# 创建一个简单 HTML 页面
+(output_dir / "index.html").write_text("""
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>扫码查看内容</h1>
+    <img src="qrcode.png" alt="QR Code">
+  </body>
+</html>
+""")
