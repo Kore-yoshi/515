@@ -22,7 +22,7 @@ jobs:
 
     - name: Generate QR Code
       run: |
-        python main.py
+        python generate_qr.py
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
